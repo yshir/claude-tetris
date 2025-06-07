@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Tetris</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #222;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        
+        .game-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        canvas {
+            border: 2px solid #fff;
+            background-color: #000;
+        }
+        
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .score-box, .next-box, .controls-box {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            min-width: 150px;
+        }
+        
+        .score-box h3, .next-box h3, .controls-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .level, .lines {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        
+        .controls {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        
+        .game-over h2 {
+            color: #ff4444;
+            margin-bottom: 20px;
+        }
+        
+        .restart-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .restart-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="300" height="600"></canvas>
+        <div class="info-panel">
+            <div class="score-box">
+                <h3>スコア</h3>
+                <div class="score" id="score">0</div>
+                <div class="level">レベル: <span id="level">1</span></div>
+                <div class="lines">ライン: <span id="lines">0</span></div>
+            </div>
+            <div class="next-box">
+                <h3>次のピース</h3>
+                <canvas id="nextCanvas" width="80" height="80"></canvas>
+            </div>
+            <div class="controls-box">
+                <h3>操作方法</h3>
+                <div class="controls">
+                    ← → : 左右移動<br>
+                    ↓ : 高速落下<br>
+                    ↑ : 回転<br>
+                    スペース : 即座に落下<br>
+                    P : 一時停止
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="game-over" id="gameOver">
+        <h2>ゲームオーバー</h2>
+        <p>最終スコア: <span id="finalScore">0</span></p>
+        <button class="restart-btn" onclick="game.restart()">もう一度プレイ</button>
+    </div>
+    
+    <script type="module" src="dist/index.js"></script>
+</body>
+</html>

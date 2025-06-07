@@ -1,0 +1,19 @@
+{
+  "name": "claude-tetris",
+  "version": "1.0.0",
+  "description": "TypeScriptで作成されたテトリスゲーム",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "serve": "tsc && npx http-server -p 8000 -c-1",
+    "dev": "npm run serve",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "http-server": "^14.1.1"
+  },
+  "keywords": ["tetris", "game", "typescript"],
+  "author": "",
+  "license": "MIT"
+}
